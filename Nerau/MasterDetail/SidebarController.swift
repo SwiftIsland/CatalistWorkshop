@@ -2,9 +2,31 @@ import UIKit
 import NerauModel
 
 public final class SidebarCell: UITableViewCell {
-    @IBOutlet var badgeLabel: UILabel!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var badgeBackgroundView: UIView!
+    @IBOutlet var badgeLabel: UILabel! {
+        didSet {
+            /// We want to change the badge color to something more akin to macOS
+            #if targetEnvironment(UIKitForMac)
+            badgeLabel.textColor = UIColor.secondaryLabel
+            badgeLabel.font = UIFont.preferredFont(forTextStyle: .body)
+            #endif
+        }
+    }
+    @IBOutlet var titleLabel: UILabel! {
+        didSet {
+            /// Set the correct font for sidebars on macOS
+            #if targetEnvironment(UIKitForMac)
+            titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
+            #endif
+        }
+    }
+    @IBOutlet var badgeBackgroundView: UIView! {
+        didSet {
+            /// Badge backgrounds are out on macOS
+            #if targetEnvironment(UIKitForMac)
+            badgeBackgroundView.backgroundColor = nil
+            #endif
+        }
+    }
     var cornerRadius: Int = 0 {
         didSet {
             badgeBackgroundView?.layer.cornerRadius = CGFloat(self.cornerRadius)
@@ -39,6 +61,9 @@ public final class SidebarController: UITableViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(UIKitForMac)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        #endif
         Database.shared.registerForChanges(item: self) { [weak self] in
             self?.updateStructure()
         }

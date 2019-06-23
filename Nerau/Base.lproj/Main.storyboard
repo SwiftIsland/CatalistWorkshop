@@ -154,7 +154,7 @@
         <!--Train-->
         <scene sceneID="NB8-Cq-vbL">
             <objects>
-                <splitViewController id="1k2-KI-0Ds" sceneMemberID="viewController">
+                <splitViewController id="1k2-KI-0Ds" customClass="MacSplitViewController" customModule="Nerau" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Train" image="tabbar_train" id="CIy-eo-Trv"/>
                     <connections>
                         <segue destination="5dN-XP-gZZ" kind="relationship" relationship="masterViewController" id="ksx-qe-S7t"/>

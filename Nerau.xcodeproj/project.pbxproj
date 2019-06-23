@@ -28,6 +28,7 @@
 		4D49D1B522BE35B800D83741 /* HelpContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D49D1B422BE35B800D83741 /* HelpContactController.swift */; };
 		4D49D1B722BE35FB00D83741 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 4D49D1B622BE35FB00D83741 /* help.html */; };
 		4D49D1BA22BE3B6100D83741 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D49D1B922BE3B6100D83741 /* CommunityViewController.swift */; };
+		4D4F64AF22BFF4A700A81C7A /* MacSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F64AE22BFF4A700A81C7A /* MacSplitViewController.swift */; };
 		4D7CF91C22B94A6E008C6F8A /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CF91B22B94A6E008C6F8A /* ResultController.swift */; };
 		4D7CF93722B96010008C6F8A /* NerauModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7CF92E22B9600F008C6F8A /* NerauModel.framework */; };
 		4D7CF93E22B96010008C6F8A /* NerauModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CF93D22B96010008C6F8A /* NerauModelTests.swift */; };
@@ -104,6 +105,7 @@
 		4D49D1B622BE35FB00D83741 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		4D49D1B922BE3B6100D83741 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		4D4F64AD22BFD8AA00A81C7A /* Nerau.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nerau.entitlements; sourceTree = "<group>"; };
+		4D4F64AE22BFF4A700A81C7A /* MacSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacSplitViewController.swift; sourceTree = "<group>"; };
 		4D7CF91B22B94A6E008C6F8A /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
 		4D7CF92E22B9600F008C6F8A /* NerauModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NerauModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7CF93022B9600F008C6F8A /* NerauModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NerauModel.h; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				4D3DEB5B22BCF85600C30B91 /* SidebarController.swift */,
 				4D3DEB5D22BD096200C30B91 /* DetailListController.swift */,
+				4D4F64AE22BFF4A700A81C7A /* MacSplitViewController.swift */,
 			);
 			path = MasterDetail;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				4D3DEB6022BD0F6900C30B91 /* Extensions.swift in Sources */,
 				3B10AC4E22B8EED800D835A4 /* TrainingViewController.swift in Sources */,
 				3B10AC6022B8F3E600D835A4 /* TrainViewNormal.swift in Sources */,
+				4D4F64AF22BFF4A700A81C7A /* MacSplitViewController.swift in Sources */,
 				4D49D1B522BE35B800D83741 /* HelpContactController.swift in Sources */,
 				4D7CF94F22B96899008C6F8A /* ResultTimeIntervalListController.swift in Sources */,
 				4D7CF91C22B94A6E008C6F8A /* ResultController.swift in Sources */,
