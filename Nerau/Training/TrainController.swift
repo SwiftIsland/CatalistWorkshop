@@ -24,7 +24,9 @@ public final class TrainController: UIViewController {
     public init(configuration: TrainConfiguration) {
         self.configuration = configuration
         switch configuration.mode {
+        #if !targetEnvironment(UIKitForMac)
         case .AR: controlView = TrainViewAR()
+        #endif
         case .normal: controlView = TrainViewNormal()
         }
         super.init(nibName: nil, bundle: nil)

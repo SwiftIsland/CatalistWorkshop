@@ -1,3 +1,4 @@
+#if !targetEnvironment(UIKitForMac)
 import ARKit
 import NerauModel
 
@@ -27,3 +28,4 @@ extension TrainViewAR: TrainControlViewProtocol {
         delegate?.cancel(with: "Ooopsie")
     }
 }
+#endif

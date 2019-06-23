@@ -19,8 +19,10 @@ extension TrainConfiguration.Difficulty {
 extension TrainConfiguration.Mode {
     var name: String {
         switch self {
+        #if !targetEnvironment(UIKitForMac)
         case .AR:
             return NSLocalizedString("Augmented Reality", comment: "Detail Result Table View Mode")
+        #endif
         case .normal:
             return NSLocalizedString("Default", comment: "Detail Result Table View Mode")
         }
