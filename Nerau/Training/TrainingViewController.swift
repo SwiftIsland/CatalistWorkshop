@@ -7,15 +7,7 @@ class TrainingViewController: UIViewController {
     
     @IBAction func doBeginTraining(sender: UIButton) {
         guard let config = controlsViewController?.calculatedConfiguration else { return }
-        let controller = TrainController(configuration: config)
-        controller.delegate = self
-        controller.modalPresentationStyle = .fullScreen
-        let alert = UIAlertController(title: "Search For", message: controller.startupMessage(), preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (_) in
-            self.present(controller, animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        beginTrainingWithConfiguration(configuration: config)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,6 +22,18 @@ class TrainingViewController: UIViewController {
             controlsViewController = segue.destination as? TrainingControlsTableViewController
         default: fatalError("Unknown Segue \(segue.identifier ?? "Anon")")
         }
+    }
+    
+    internal func beginTrainingWithConfiguration(configuration: TrainConfiguration) {
+        let controller = TrainController(configuration: configuration)
+        controller.delegate = self
+        controller.modalPresentationStyle = .fullScreen
+        let alert = UIAlertController(title: "Search For", message: controller.startupMessage(), preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (_) in
+            self.present(controller, animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
