@@ -39,9 +39,16 @@ final public class TrainViewNormal: UIView {
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.count >= 2 {
-            delegate?.cancel(with: "User Quit")
+        let message = "User Quit"
+        #if targetEnvironment(UIKitForMac)
+        if touches.first?.tapCount == 2 {
+            delegate?.cancel(with: message)
         }
+        #else
+        if touches.count >= 2 {
+            delegate?.cancel(with: message)
+        }
+        #endif
     }
 }
 
@@ -96,7 +103,12 @@ extension TrainViewNormal: TrainControlViewProtocol {
         }
         
         let label = UILabel()
+        #if targetEnvironment(UIKitForMac)
+        label.text = "Doubleclick to cancel"
+        #else
         label.text = "Touch with 2 fingers to cancel"
+        #endif
+
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         NSLayoutConstraint.activate([
