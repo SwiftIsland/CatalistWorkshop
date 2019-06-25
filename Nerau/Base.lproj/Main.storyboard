@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3" initialMenu="tUf-p8-1NL">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -515,6 +515,466 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--MainMenu-->
+        <scene sceneID="GZ7-0C-0GN">
+            <objects>
+                <menu title="MainMenu" discoverabilityTitle="" identifier="com.apple.menu.root" id="tUf-p8-1NL" sceneMemberID="viewController">
+                    <children>
+                        <menu title="Application" discoverabilityTitle="" identifier="com.apple.menu.application" id="o8u-kN-PR3">
+                            <children>
+                                <menu title="About" discoverabilityTitle="" identifier="com.apple.menu.about" id="ACp-eV-NkN">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="About Application" discoverabilityTitle="" propertyListString="" id="PaE-5a-ld7">
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" destination="WH8-bX-UUJ" id="xtF-SP-5My"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu title="Services" discoverabilityTitle="" identifier="com.apple.menu.services" id="vpg-mm-jRe"/>
+                                <menu title="Hide" discoverabilityTitle="" identifier="com.apple.menu.hide" id="Tap-Om-CJE">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Hide Application" discoverabilityTitle="" propertyListString="" input="h" id="H1t-82-4SD">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="hide:" destination="WH8-bX-UUJ" id="fNv-zS-8hO"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Hide Others" discoverabilityTitle="" propertyListString="" input="h" id="nVP-Kp-uBV">
+                                            <keyModifierFlags key="modifierFlags" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" destination="WH8-bX-UUJ" id="7Qz-mu-QWA"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Show All" discoverabilityTitle="" propertyListString="" id="i9k-yd-bFc">
+                                            <connections>
+                                                <action selector="unhideAllApplications:" destination="WH8-bX-UUJ" id="aKA-3r-WzR"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.quit" id="7I7-8f-dUJ">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Quit Application" discoverabilityTitle="" propertyListString="" input="q" id="DWf-0J-exY">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="terminate:" destination="WH8-bX-UUJ" id="a0F-Bx-YZL"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="File" discoverabilityTitle="" identifier="com.apple.menu.file" id="mHa-lB-ofo">
+                            <children>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.close" id="N1y-H7-lbV">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Easy Training" input="N" id="PV1-Bk-82v">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="beginEasyTrainingWithSender:" destination="WH8-bX-UUJ" id="xfk-Wz-OaR"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Close" discoverabilityTitle="" propertyListString="" input="w" id="28h-EN-T4d">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <alternates>
+                                                <commandAlternate title="Close All" actionName="closeAll:" id="s6o-JF-R46">
+                                                    <keyModifierFlags key="modifierFlags" option="YES"/>
+                                                </commandAlternate>
+                                            </alternates>
+                                            <connections>
+                                                <action selector="performClose:" destination="WH8-bX-UUJ" id="fMV-dS-ZHW"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.print" id="MZj-ID-l9V">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="Edit" discoverabilityTitle="" identifier="com.apple.menu.edit" id="DUZ-Rw-nZU">
+                            <children>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.undo-redo" id="Hdl-mW-NRs">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Undo" discoverabilityTitle="" propertyListString="" input="z" id="n6w-Ws-Tb6">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="undo:" destination="WH8-bX-UUJ" id="XS2-t4-RFv"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Redo" discoverabilityTitle="" propertyListString="" input="z" id="jag-nq-Wt4">
+                                            <keyModifierFlags key="modifierFlags" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="redo:" destination="WH8-bX-UUJ" id="Rz2-L6-yJk"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.standard-edit" id="MfD-CE-tmW">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Cut" discoverabilityTitle="" propertyListString="" input="x" id="ZZW-o7-Lqr">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="cut:" destination="WH8-bX-UUJ" id="f2U-J7-VAg"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Copy" discoverabilityTitle="" propertyListString="" input="c" id="BDT-SV-0gc">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="copy:" destination="WH8-bX-UUJ" id="qgQ-cK-m5W"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Paste" discoverabilityTitle="" propertyListString="" input="v" id="rsb-Rb-RGC">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="paste:" destination="WH8-bX-UUJ" id="VUh-ec-CIA"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Delete" discoverabilityTitle="" propertyListString="" id="dMT-fU-Ybe">
+                                            <connections>
+                                                <action selector="delete:" destination="WH8-bX-UUJ" id="RGu-d7-52Z"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Select All" discoverabilityTitle="" propertyListString="" input="a" id="ZF3-Kz-mV2">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="selectAll:" destination="WH8-bX-UUJ" id="8XT-aC-XbD"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.find" id="EM3-fG-Hs7">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Find…" discoverabilityTitle="" propertyListString="" input="f" id="chp-C0-t63">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="performFindPanelAction:" destination="WH8-bX-UUJ" id="iLy-uz-2q4"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu title="Spelling and Grammar" discoverabilityTitle="" identifier="com.apple.menu.spelling" id="NO8-nJ-Ek7">
+                                    <children>
+                                        <menu discoverabilityTitle="" identifier="com.apple.menu.spelling-panel" id="mLa-ub-iPb">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Show Spelling and Grammar" discoverabilityTitle="" propertyListString="" input=":" id="zZm-gF-I1u">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="showGuessPanel:" destination="WH8-bX-UUJ" id="VEe-6v-P4u"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Check Document Now" discoverabilityTitle="" propertyListString="" input=";" id="JxQ-Xg-Cql">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="checkSpelling:" destination="WH8-bX-UUJ" id="bSz-GG-epf"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu discoverabilityTitle="" identifier="com.apple.menu.spelling-options" id="wrf-Au-k9F">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Check Spelling While Typing" discoverabilityTitle="" propertyListString="" id="tT9-Oo-yDQ">
+                                                    <connections>
+                                                        <action selector="toggleContinuousSpellChecking:" destination="WH8-bX-UUJ" id="zFW-FT-ddI"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Check Grammar With Spelling" discoverabilityTitle="" propertyListString="" id="Leo-Wx-acI">
+                                                    <connections>
+                                                        <action selector="toggleGrammarChecking:" destination="WH8-bX-UUJ" id="vh0-V3-9f1"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Correct Spelling Automatically" discoverabilityTitle="" propertyListString="" id="vEP-Cd-QB3">
+                                                    <connections>
+                                                        <action selector="toggleAutomaticSpellingCorrection:" destination="WH8-bX-UUJ" id="YCO-QM-lQ2"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                    </children>
+                                </menu>
+                                <menu title="Substitutions" discoverabilityTitle="" identifier="com.apple.menu.substitutions" id="J6N-Xj-RRx">
+                                    <children>
+                                        <menu discoverabilityTitle="" identifier="com.apple.menu.substitutions-panel" id="1mG-7l-elo">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Smart Substitutions" discoverabilityTitle="" propertyListString="" id="ZH7-Ka-pFH">
+                                                    <connections>
+                                                        <action selector="orderFrontSubstitutionsPanel:" destination="WH8-bX-UUJ" id="SCB-eI-o9I"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu discoverabilityTitle="" identifier="com.apple.menu.substitution-options" id="gzS-HP-F6t">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Smart Copy/Paste" discoverabilityTitle="" propertyListString="" id="Bz2-vj-XpM">
+                                                    <connections>
+                                                        <action selector="toggleSmartInsertDelete:" destination="WH8-bX-UUJ" id="h4W-xn-Age"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Smart Quotes" discoverabilityTitle="" propertyListString="" id="Q08-0a-xM6">
+                                                    <connections>
+                                                        <action selector="toggleAutomaticQuoteSubstitution:" destination="WH8-bX-UUJ" id="Xao-ud-qfq"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Smart Dashes" discoverabilityTitle="" propertyListString="" id="6X5-fU-U8u">
+                                                    <connections>
+                                                        <action selector="toggleAutomaticDashSubstitution:" destination="WH8-bX-UUJ" id="OEL-Mw-Fhj"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Smart Links" discoverabilityTitle="" propertyListString="" id="38J-QM-tz5">
+                                                    <connections>
+                                                        <action selector="toggleAutomaticLinkDetection:" destination="WH8-bX-UUJ" id="JeT-Hg-emp"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Text Replacement" discoverabilityTitle="" propertyListString="" id="GgQ-27-YmT">
+                                                    <connections>
+                                                        <action selector="toggleAutomaticTextReplacement:" destination="WH8-bX-UUJ" id="eRc-gF-x2F"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                    </children>
+                                </menu>
+                                <menu title="Transformations" discoverabilityTitle="" identifier="com.apple.menu.transformations" id="FGg-Vh-c9N">
+                                    <children>
+                                        <command title="Make Upper Case" discoverabilityTitle="" propertyListString="" id="Nk3-xn-QVc">
+                                            <connections>
+                                                <action selector="uppercaseWord:" destination="WH8-bX-UUJ" id="aP4-j0-5Zp"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Make Lower Case" discoverabilityTitle="" propertyListString="" id="9fL-Cy-JwI">
+                                            <connections>
+                                                <action selector="lowercaseWord:" destination="WH8-bX-UUJ" id="hhZ-g5-Typ"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Capitalize" discoverabilityTitle="" propertyListString="" id="bLB-mg-g2j">
+                                            <connections>
+                                                <action selector="capitalizeWord:" destination="WH8-bX-UUJ" id="e7O-4a-pLE"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu title="Speech" discoverabilityTitle="" identifier="com.apple.command.speech" id="0Yd-83-g9V">
+                                    <children>
+                                        <command title="Start Speaking" discoverabilityTitle="" propertyListString="" id="d7Q-tP-a2j">
+                                            <connections>
+                                                <action selector="startSpeaking:" destination="WH8-bX-UUJ" id="93p-lh-BeS"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Stop Speaking" discoverabilityTitle="" propertyListString="" id="fFq-o6-ATd">
+                                            <connections>
+                                                <action selector="stopSpeaking:" destination="WH8-bX-UUJ" id="t5v-pg-4rs"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="Format" discoverabilityTitle="" identifier="com.apple.menu.format" id="vwV-zg-iZO">
+                            <children>
+                                <menu title="Font" discoverabilityTitle="" identifier="com.apple.menu.font" id="aNP-jF-GZJ">
+                                    <children>
+                                        <menu title="Text Style" discoverabilityTitle="" identifier="com.apple.menu.text-style" id="vKK-20-ztY">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Show Fonts" discoverabilityTitle="" propertyListString="" input="t" id="lZv-gw-43J">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleFontPanel:" destination="WH8-bX-UUJ" id="Rib-S0-jwD"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Bold" discoverabilityTitle="" propertyListString="" input="b" id="fD6-zL-4cZ">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleBoldface:" destination="WH8-bX-UUJ" id="j13-jp-pp9"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Italic" discoverabilityTitle="" propertyListString="" input="i" id="P9w-Fj-Tbr">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleItalics:" destination="WH8-bX-UUJ" id="L0r-CO-LcH"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Underline" discoverabilityTitle="" propertyListString="" input="u" id="O2h-5w-Mw4">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleUnderline:" destination="WH8-bX-UUJ" id="EfV-gs-AjC"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu title="Text Size" discoverabilityTitle="" identifier="com.apple.menu.text-size" id="mEo-Ma-yJX">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Bigger" discoverabilityTitle="" propertyListString="" input="+" id="bIm-LC-pEF">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="increaseSize:" destination="WH8-bX-UUJ" id="VYl-M3-pHR"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Smaller" discoverabilityTitle="" propertyListString="" input="-" id="G2t-dW-5TQ">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="decreaseSize:" destination="WH8-bX-UUJ" id="rWi-oh-ZRj"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu title="Text Color" discoverabilityTitle="" identifier="com.apple.menu.text-color" id="oQU-Nz-Ogo">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Show Colors" discoverabilityTitle="" propertyListString="" input="c" id="bhY-MQ-HxM">
+                                                    <keyModifierFlags key="modifierFlags" shift="YES" command="YES"/>
+                                                    <connections>
+                                                        <action selector="orderFrontColorPanel:" destination="WH8-bX-UUJ" id="44k-gM-pEC"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu title="Text Pasteboard" discoverabilityTitle="" identifier="com.apple.menu.text-style-pasteboard" id="Zx5-5L-Q71">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Copy Style" discoverabilityTitle="" propertyListString="" input="c" id="tGg-72-1BJ">
+                                                    <keyModifierFlags key="modifierFlags" option="YES" command="YES"/>
+                                                    <connections>
+                                                        <action selector="copyFont:" destination="WH8-bX-UUJ" id="A7Y-z4-4Ye"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Paste Style" discoverabilityTitle="" propertyListString="" input="v" id="jsN-NA-u6V">
+                                                    <keyModifierFlags key="modifierFlags" option="YES" command="YES"/>
+                                                    <connections>
+                                                        <action selector="pasteFont:" destination="WH8-bX-UUJ" id="QS1-kS-iaC"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                    </children>
+                                </menu>
+                                <menu title="Text" discoverabilityTitle="" identifier="com.apple.menu.text" id="n9A-HT-oHe">
+                                    <children>
+                                        <menu title="Text Alignment" discoverabilityTitle="" identifier="com.apple.menu.alignment" id="1Gh-OK-75G">
+                                            <commandGroupOptions key="options" displayInline="YES"/>
+                                            <children>
+                                                <command title="Align Left" discoverabilityTitle="" propertyListString="" input="{" id="fry-CN-rp0">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="alignLeft:" destination="WH8-bX-UUJ" id="eQB-6a-6gG"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Center" discoverabilityTitle="" propertyListString="" input="|" id="s3Q-8o-R6v">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="alignCenter:" destination="WH8-bX-UUJ" id="CkH-zU-l59"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Justify" discoverabilityTitle="" propertyListString="" id="Hca-4V-q0B">
+                                                    <connections>
+                                                        <action selector="alignJustified:" destination="WH8-bX-UUJ" id="kQd-Bm-r04"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Align Right" discoverabilityTitle="" propertyListString="" input="}" id="c0v-j3-vIb">
+                                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                                    <connections>
+                                                        <action selector="alignRight:" destination="WH8-bX-UUJ" id="Yua-gw-52f"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                        <menu title="Writing Direction" discoverabilityTitle="" identifier="com.apple.menu.writing-direction" id="GJo-fa-LSz">
+                                            <children>
+                                                <command title="Default" discoverabilityTitle="" propertyListString="" id="avy-8c-o85">
+                                                    <connections>
+                                                        <action selector="makeTextWritingDirectionNatural:" destination="WH8-bX-UUJ" id="TiK-Du-iFs"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Right to Left" discoverabilityTitle="" propertyListString="" id="l4P-D6-lfo">
+                                                    <connections>
+                                                        <action selector="makeTextWritingDirectionRightToLeft:" destination="WH8-bX-UUJ" id="wXj-hK-Zia"/>
+                                                    </connections>
+                                                </command>
+                                                <command title="Left to Right" discoverabilityTitle="" propertyListString="" id="YNW-XF-QF1">
+                                                    <connections>
+                                                        <action selector="makeTextWritingDirectionLeftToRight:" destination="WH8-bX-UUJ" id="2ky-Kd-nzh"/>
+                                                    </connections>
+                                                </command>
+                                            </children>
+                                        </menu>
+                                    </children>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="View" discoverabilityTitle="" identifier="com.apple.menu.view" id="ASP-qX-NHd">
+                            <children>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.fullscreen" id="pkt-lR-9LA">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Enter Full Screen" discoverabilityTitle="" propertyListString="" input="f" id="tUl-6r-naa">
+                                            <keyModifierFlags key="modifierFlags" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" destination="WH8-bX-UUJ" id="JLT-tY-y27"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="Window" discoverabilityTitle="" identifier="com.apple.menu.window" id="iUC-m6-Bcp">
+                            <children>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.minimize-and-zoom" id="BSJ-rs-MYZ">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Minimize" discoverabilityTitle="" propertyListString="" input="m" id="ijK-zA-fTo">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
+                                            <connections>
+                                                <action selector="performMiniaturize:" destination="WH8-bX-UUJ" id="qRM-AL-Hzn"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Zoom" discoverabilityTitle="" propertyListString="" id="ugq-Vy-5Es">
+                                            <connections>
+                                                <action selector="performZoom:" destination="WH8-bX-UUJ" id="D0Z-bE-ldj"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                                <menu discoverabilityTitle="" identifier="com.apple.menu.bring-all-to-front" id="ohj-ne-faP">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Bring All to Front" discoverabilityTitle="" propertyListString="" id="Qhu-3P-Q0F">
+                                            <connections>
+                                                <action selector="arrangeInFront:" destination="WH8-bX-UUJ" id="YCI-3g-1gh"/>
+                                            </connections>
+                                        </command>
+                                    </children>
+                                </menu>
+                            </children>
+                        </menu>
+                        <menu title="Help" discoverabilityTitle="" identifier="com.apple.menu.help" id="hde-tG-OmA">
+                            <children>
+                                <command title="Application Help" discoverabilityTitle="" propertyListString="" input="?" id="0Ho-n9-9f3">
+                                    <keyModifierFlags key="modifierFlags" command="YES"/>
+                                    <connections>
+                                        <action selector="showHelp:" destination="WH8-bX-UUJ" id="gFC-Hf-eWf"/>
+                                    </connections>
+                                </command>
+                            </children>
+                        </menu>
+                    </children>
+                </menu>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WH8-bX-UUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4289" y="-630"/>
         </scene>
     </scenes>
     <resources>
