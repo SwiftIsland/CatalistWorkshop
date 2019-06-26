@@ -40,6 +40,7 @@
 		4D7CF95122B974D1008C6F8A /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7CF95022B974D1008C6F8A /* Result.storyboard */; };
 		4D7CF95622BABC24008C6F8A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CF95522BABC24008C6F8A /* Database.swift */; };
 		4D7CF95822BABD94008C6F8A /* NerauModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D7CF95222BABBD6008C6F8A /* NerauModel.xcdatamodeld */; };
+		4DC772E122C34BBF00EDB6B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC772E022C34BBF00EDB6B2 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		3B10AC5722B8EEDB00D835A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B10AC5D22B8F20200D835A4 /* TrainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainController.swift; sourceTree = "<group>"; };
 		3B10AC5F22B8F3E600D835A4 /* TrainViewNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainViewNormal.swift; sourceTree = "<group>"; };
+		4D0E3BD522C3539600603C58 /* Nerau-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nerau-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D3DEB5522BCF3E400C30B91 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		4D3DEB5B22BCF85600C30B91 /* SidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		4D3DEB5D22BD096200C30B91 /* DetailListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		4D7CF95022B974D1008C6F8A /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		4D7CF95322BABBD6008C6F8A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4D7CF95522BABC24008C6F8A /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		4DC772E022C34BBF00EDB6B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				3B10AC5222B8EEDB00D835A4 /* Assets.xcassets */,
 				3B10AC5422B8EEDB00D835A4 /* LaunchScreen.storyboard */,
 				3B10AC5722B8EEDB00D835A4 /* Info.plist */,
+				4DC772E022C34BBF00EDB6B2 /* SceneDelegate.swift */,
+				4D0E3BD522C3539600603C58 /* Nerau-Bridging-Header.h */,
 			);
 			path = Nerau;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				4D49D1B522BE35B800D83741 /* HelpContactController.swift in Sources */,
 				4D7CF94F22B96899008C6F8A /* ResultTimeIntervalListController.swift in Sources */,
 				4D7CF91C22B94A6E008C6F8A /* ResultController.swift in Sources */,
+				4DC772E122C34BBF00EDB6B2 /* SceneDelegate.swift in Sources */,
 				4D3DEB5E22BD096200C30B91 /* DetailListController.swift in Sources */,
 				4D3DEB5C22BCF85600C30B91 /* SidebarController.swift in Sources */,
 				4D49D1BA22BE3B6100D83741 /* CommunityViewController.swift in Sources */,
@@ -549,7 +555,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -604,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -631,6 +637,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.Nerau;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_UIKITFORMAC = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Nerau/Nerau-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -653,6 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.Nerau;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_UIKITFORMAC = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Nerau/Nerau-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
