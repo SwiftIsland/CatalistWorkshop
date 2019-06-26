@@ -5,9 +5,24 @@ class TrainingViewController: UIViewController {
     
     private var controlsViewController: TrainingControlsTableViewController?
     
-    @IBAction func doBeginTraining(sender: UIButton) {
+    override var keyCommands: [UIKeyCommand]? {
+        return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doCancelCommand(sender:))),
+                UIKeyCommand(input: "\r", modifierFlags: [UIKeyModifierFlags.command], action: #selector(doBeginCommand(sender:)))
+        ]
+    }
+    
+    @IBAction func doBeginTraining(sender: UIButton?) {
         guard let config = controlsViewController?.calculatedConfiguration else { return }
         beginTrainingWithConfiguration(configuration: config)
+    }
+    
+    @objc func doCancelCommand(sender: UIKeyCommand) {
+        controlsViewController?.dismiss(animated: true, completion: nil)
+        controlsViewController = nil
+    }
+    
+    @objc func doBeginCommand(sender: UIKeyCommand) {
+        doBeginTraining(sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
