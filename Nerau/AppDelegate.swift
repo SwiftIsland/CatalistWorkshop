@@ -12,14 +12,12 @@ import NerauModel
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if Database.shared.numberOfTrainResults() == 0 {
             Database.shared.generateFakeData(number: 100)
         }
         Database.shared.errorDelegate = self
+        
         return true
     }
 
@@ -54,9 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func startTraining(configuration: TrainConfiguration?) {
         let window = UIApplication.shared.keyWindow
         guard let controller = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultController") as? TrainingViewController else { fatalError() }
-        
         controller.modalPresentationStyle = .formSheet
-        (window?.rootViewController as? UITabBarController)?.viewControllers?[0].present(controller, animated: true, completion: {
+        window?.rootViewController?.present(controller, animated: true, completion: {
             if let config = configuration {
                 controller.beginTrainingWithConfiguration(configuration: config)
             }
@@ -68,6 +65,6 @@ extension AppDelegate: UIErrorHandler {
     func displayError(message: String) {
         let alert = UIAlertController(title: "Data Error", message: message,
                                       preferredStyle: .alert)
-        window?.rootViewController?.present(alert, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }

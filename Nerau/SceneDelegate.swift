@@ -1,9 +1,10 @@
 import UIKit
-
+import NerauModel
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     static let SegmentedItemToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "PrimaryGroup")
+    static let NewTrainingItemToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "NewTraining")
     
     var window: UIWindow?
     
@@ -58,6 +59,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    @objc func doBeginNewTraining(sender: UIBarButtonItem) {
+        (UIApplication.shared.delegate as? AppDelegate)?.startTraining(configuration: nil)
+    }
 }
 
 #if targetEnvironment(UIKitForMac)
@@ -75,6 +80,10 @@ extension SceneDelegate: NSToolbarDelegate {
             
             return group
         }
+        if (itemIdentifier == SceneDelegate.NewTrainingItemToolbarIdentifier) {
+            let button = NSToolbarItem(itemIdentifier: SceneDelegate.NewTrainingItemToolbarIdentifier, barButtonItem: UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.doBeginNewTraining(sender:))))
+            return button
+        }
         
         return nil
     }
@@ -85,7 +94,9 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [SceneDelegate.SegmentedItemToolbarIdentifier]
+        return [SceneDelegate.SegmentedItemToolbarIdentifier,
+                NSToolbarItem.Identifier.flexibleSpace,
+                SceneDelegate.NewTrainingItemToolbarIdentifier]
     }
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
