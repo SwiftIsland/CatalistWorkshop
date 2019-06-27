@@ -46,6 +46,8 @@ final class ResultWrappingController: UIViewController {
 
 final class ResultController: UIViewController {
     
+    static let SomethingTouchBarIdentifier = NSTouchBarItem.Identifier(rawValue: "ToggleStar")
+    
     public var result: TrainResult?
     
     @IBOutlet var imageView: UIImageView!
@@ -61,4 +63,36 @@ final class ResultController: UIViewController {
             (segue.destination as? ResultTimeIntervalListController)?.dataPoints = result!.durationPoints.map { $0.1 }
         }
     }
+    
+    @objc func toggleStar(sender: Any) {
+        result?.stared.toggle()
+        guard let r = result else { return }
+        Database.shared.toggleStarResult(result: r)
+        self.touchBar = self.makeTouchBar()
+    }
 }
+
+#if targetEnvironment(UIKitForMac)
+extension ResultController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.defaultItemIdentifiers = [ResultController.SomethingTouchBarIdentifier]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        guard let r = result else { return nil }
+        switch identifier {
+        case ResultController.SomethingTouchBarIdentifier:
+            return NSButtonTouchBarItem.init(identifier: identifier,
+                                             title: r.stared ? "Unstar" : "Star",
+                                             target: self,
+                                             action: #selector(self.toggleStar(sender:)))
+        default:
+            return nil
+        }
+    }
+}
+
+#endif
