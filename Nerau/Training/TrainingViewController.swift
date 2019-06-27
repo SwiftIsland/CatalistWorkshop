@@ -6,6 +6,9 @@ class TrainingViewController: UIViewController {
     private var controlsViewController: TrainingControlsTableViewController?
     
     let SliderTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "SliderItem")
+    let OkButttonTouchBarItemIdentifer = NSTouchBarItem.Identifier(rawValue: "OkButton")
+    let CancelButtonTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "CancelButton")
+    let ActionGroupTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "Group")
     
     override var keyCommands: [UIKeyCommand]? {
         return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doCancelCommand(sender:))),
@@ -64,6 +67,14 @@ class TrainingViewController: UIViewController {
             controlsViewController?.updateSlider(with: CGFloat(value))
         }
     }
+    
+    @objc func touchBarBegin(sender: Any) {
+        doBeginTraining(sender: nil)
+    }
+    
+    @objc func touchBarCancel(sender: Any) {
+        controlsViewController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension TrainingViewController: TrainControllerDelegate {
@@ -84,8 +95,10 @@ extension TrainingViewController: NSTouchBarDelegate {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.defaultItemIdentifiers = [
-            SliderTouchBarItemIdentifier
+            SliderTouchBarItemIdentifier,
+            ActionGroupTouchBarItemIdentifier
         ]
+        touchBar.principalItemIdentifier = ActionGroupTouchBarItemIdentifier
         return touchBar
     }
     
@@ -102,6 +115,15 @@ extension TrainingViewController: NSTouchBarDelegate {
             slider.setValue(ctrl.lengthSlider.minimumValue, forKeyPath: "slider.minValue")
             slider.setValue(ctrl.lengthSlider.value, forKeyPath: "slider.intValue")
             return slider
+        case ActionGroupTouchBarItemIdentifier:
+            let firstItem = NSButtonTouchBarItem(identifier: OkButttonTouchBarItemIdentifer, title: "Begin", target: self, action: #selector(touchBarBegin))
+            firstItem.bezelColor = UIColor.systemBlue
+            let secondItem = NSButtonTouchBarItem(identifier: CancelButtonTouchBarItemIdentifier, title: "Cancel", target: self, action: #selector(touchBarCancel))
+            secondItem.bezelColor = UIColor.systemRed
+            let group = NSGroupTouchBarItem(alertStyleWithIdentifier: identifier)
+            group.groupTouchBar.templateItems = [firstItem, secondItem]
+            group.groupTouchBar.defaultItemIdentifiers = [OkButttonTouchBarItemIdentifer, CancelButtonTouchBarItemIdentifier]
+            return group
         default: return nil
         }
     }
