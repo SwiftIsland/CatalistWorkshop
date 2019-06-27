@@ -5,6 +5,8 @@ class TrainingViewController: UIViewController {
     
     private var controlsViewController: TrainingControlsTableViewController?
     
+    let SliderTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "SliderItem")
+    
     override var keyCommands: [UIKeyCommand]? {
         return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doCancelCommand(sender:))),
                 UIKeyCommand(input: "\r", modifierFlags: [UIKeyModifierFlags.command], action: #selector(doBeginCommand(sender:)))
@@ -37,6 +39,12 @@ class TrainingViewController: UIViewController {
             controlsViewController = segue.destination as? TrainingControlsTableViewController
         default: fatalError("Unknown Segue \(segue.identifier ?? "Anon")")
         }
+        
+        self.touchBar = makeTouchBar()
+        
+        controlsViewController?.sliderChange = { [weak self] in
+            self?.touchBar = self?.makeTouchBar()
+        }
     }
     
     internal func beginTrainingWithConfiguration(configuration: TrainConfiguration) {
@@ -49,6 +57,12 @@ class TrainingViewController: UIViewController {
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func didUpdateTouchbarSlider(slider: NSSliderTouchBarItem) {
+        if let value = slider.value(forKeyPath: "slider.intValue") as? Int {
+            controlsViewController?.updateSlider(with: CGFloat(value))
+        }
     }
 }
 
@@ -63,3 +77,34 @@ extension TrainingViewController: TrainControllerDelegate {
         controller.dismiss(animated: true)
     }
 }
+
+#if targetEnvironment(UIKitForMac)
+extension TrainingViewController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.defaultItemIdentifiers = [
+            SliderTouchBarItemIdentifier
+        ]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        guard let ctrl = controlsViewController else { return nil }
+        // Note: 'NSImageNameTouchBarAddTemplate' is unavailable in UIKit for Mac
+        switch identifier {
+        case SliderTouchBarItemIdentifier:
+            let slider = NSSliderTouchBarItem(identifier: identifier)
+            slider.action = #selector(self.didUpdateTouchbarSlider)
+            slider.target = self
+            slider.label = "Strength"
+            slider.setValue(ctrl.lengthSlider.maximumValue, forKeyPath: "slider.maxValue")
+            slider.setValue(ctrl.lengthSlider.minimumValue, forKeyPath: "slider.minValue")
+            slider.setValue(ctrl.lengthSlider.value, forKeyPath: "slider.intValue")
+            return slider
+        default: return nil
+        }
+    }
+}
+
+#endif

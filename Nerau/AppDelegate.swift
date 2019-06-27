@@ -54,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let controller = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultController") as? TrainingViewController else { fatalError() }
         controller.modalPresentationStyle = .formSheet
         window?.rootViewController?.present(controller, animated: true, completion: {
+        
+        (window?.rootViewController as? UITabBarController)?.viewControllers?[0].present(controller, animated: true, completion: {
             if let config = configuration {
                 controller.beginTrainingWithConfiguration(configuration: config)
             }

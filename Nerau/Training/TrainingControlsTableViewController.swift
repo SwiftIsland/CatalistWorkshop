@@ -15,6 +15,8 @@ final class TrainingControlsTableViewController: UITableViewController {
     @IBOutlet var lengthSlider: UISlider!
     @IBOutlet var lengthLabel: UILabel!
     
+    var sliderChange: (() -> Void)?
+    
     private let difficultyValues = TrainConfiguration.Difficulty.allCases.map { ($0.name, $0) }
     
     override func viewDidLoad() {
@@ -27,8 +29,15 @@ final class TrainingControlsTableViewController: UITableViewController {
     
     @objc func didUpdateSlider(slider: UISlider) {
         lengthLabel.text = "\(Int(slider.value)) numbers"
+        sliderChange?()
+    }
+    
+    func updateSlider(with value: CGFloat) {
+        lengthSlider.value = Float(value)
     }
 }
+
+
 
 extension TrainingControlsTableViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView,
@@ -47,3 +56,4 @@ extension TrainingControlsTableViewController: UIPickerViewDataSource {
         return difficultyValues.count
     }
 }
+
