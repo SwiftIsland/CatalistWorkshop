@@ -9,6 +9,8 @@
 import UIKit
 
 class MacSplitViewController: UISplitViewController {
+    
+    static let NewTrainingItemTouchbarIdentifier = NSTouchBarItem.Identifier(rawValue: "NewTraining")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +21,31 @@ class MacSplitViewController: UISplitViewController {
         #endif
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func doBeginNewTraining(sender: Any) {
+        (UIApplication.shared.delegate as? AppDelegate)?.startTraining(configuration: nil)
     }
-    */
-
 }
+
+#if targetEnvironment(UIKitForMac)
+extension MacSplitViewController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.defaultItemIdentifiers = [MacSplitViewController.NewTrainingItemTouchbarIdentifier]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        // Note: 'NSImageNameTouchBarAddTemplate' is unavailable in UIKit for Mac
+        switch identifier {
+        case MacSplitViewController.NewTrainingItemTouchbarIdentifier:
+            return NSButtonTouchBarItem.init(identifier: identifier,
+                                             title: "New Training",
+                                             target: self,
+                                             action: #selector(self.doBeginNewTraining))
+        default: return nil
+        }
+    }
+}
+
+#endif

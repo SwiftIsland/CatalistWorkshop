@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/NSToolbar+UIKitAdditions.h>
+#import <UIKit/NSTouchbar+UIKitAdditions.h>
 
 
 #endif /* Nerau_Bridging_Header_h */
