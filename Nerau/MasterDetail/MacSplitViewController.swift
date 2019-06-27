@@ -31,7 +31,8 @@ extension MacSplitViewController: NSTouchBarDelegate {
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
-        touchBar.defaultItemIdentifiers = [MacSplitViewController.NewTrainingItemTouchbarIdentifier]
+        touchBar.defaultItemIdentifiers = [MacSplitViewController.NewTrainingItemTouchbarIdentifier,
+                                           NSTouchBarItem.Identifier.otherItemsProxy]
         return touchBar
     }
     
