@@ -18,7 +18,7 @@ final public class TrainViewNormal: UIView {
     
     private var characters: [Character] = []
     private var hitCharacter: Character = " "
-
+    
     override public func layoutSubviews() {
         super.layoutSubviews()
     }
@@ -58,7 +58,7 @@ extension TrainViewNormal {
         button.setTitle("\(character)", for: .normal)
         button.frame = point.frame(with: TrainingLogic.tapTargetSize)
         button.titleLabel?.font = font
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        button.setTitleColor(UIColor.label, for: UIControl.State.normal)
         return button
     }
     
@@ -66,6 +66,7 @@ extension TrainViewNormal {
         let label = UILabel(frame: point.frame(with: TrainingLogic.tapTargetSize))
         label.text = "\(character)"
         label.font = font
+        label.textColor = UIColor.label
         return label
     }
 }

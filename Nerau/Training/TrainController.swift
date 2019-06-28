@@ -48,7 +48,7 @@ public final class TrainController: UIViewController {
 
     private func setupView() {
         controlView.delegate = self
-        controlView.backgroundColor = UIColor.white
+        controlView.backgroundColor = UIColor.systemBackground
         controlView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(controlView)
         NSLayoutConstraint.activate([
