@@ -50,6 +50,9 @@ final class ResultController: UIViewController {
     
     public var result: TrainResult?
     
+    @IBOutlet weak var containerViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var durationField: UITextField!
     
@@ -57,8 +60,10 @@ final class ResultController: UIViewController {
         super.viewDidLoad()
         #if targetEnvironment(UIKitForMac)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        bottomToolbar.removeFromSuperview()
+        containerViewBottom.constant = 0
         #endif
-
+        
         imageView.image = self.result!.resultImage(size: imageView.frame.size)
     }
     

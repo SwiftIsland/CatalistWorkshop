@@ -61,6 +61,7 @@ public final class DetailListController: UITableViewController {
         super.viewWillAppear(animated)
         #if targetEnvironment(UIKitForMac)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setToolbarHidden(true, animated: false)
         #endif
     }
     

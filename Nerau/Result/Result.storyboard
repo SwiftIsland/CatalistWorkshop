@@ -40,7 +40,7 @@
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="eZC-dd-yOJ" secondAttribute="bottom" id="3QG-EA-8dc"/>
                             <constraint firstItem="k3I-Ml-qEs" firstAttribute="top" secondItem="HRC-OY-kdY" secondAttribute="top" constant="20" id="6Tu-Mx-XTU"/>
                             <constraint firstItem="d6X-iL-wwp" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="86n-Yu-enk"/>
-                            <constraint firstItem="eZC-dd-yOJ" firstAttribute="top" secondItem="d6X-iL-wwp" secondAttribute="bottom" id="QJM-ho-sGA"/>
+                            <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="d6X-iL-wwp" secondAttribute="bottom" constant="49" id="Mcr-HY-JmQ"/>
                             <constraint firstItem="k3I-Ml-qEs" firstAttribute="centerX" secondItem="HRC-OY-kdY" secondAttribute="centerX" id="Wyp-tM-GNC"/>
                             <constraint firstItem="eZC-dd-yOJ" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="gN3-Bd-iw1"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="trailing" secondItem="eZC-dd-yOJ" secondAttribute="trailing" id="jk0-rj-B4b"/>
@@ -49,10 +49,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRC-OY-kdY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YsK-xH-tdI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="UcO-Um-LzE"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="YsK-xH-tdI"/>
                     <connections>
+                        <outlet property="bottomToolbar" destination="eZC-dd-yOJ" id="R7B-Wi-vlk"/>
+                        <outlet property="containerViewBottom" destination="Mcr-HY-JmQ" id="102-1N-xqq"/>
                         <outlet property="imageView" destination="k3I-Ml-qEs" id="07D-P0-vbg"/>
                     </connections>
                 </viewController>
