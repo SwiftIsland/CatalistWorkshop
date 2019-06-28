@@ -43,6 +43,10 @@ public final class TrainController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setupView()
     }
 
