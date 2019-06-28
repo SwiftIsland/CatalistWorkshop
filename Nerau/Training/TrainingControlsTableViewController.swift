@@ -35,6 +35,15 @@ final class TrainingControlsTableViewController: UITableViewController {
     func updateSlider(with value: CGFloat) {
         lengthSlider.value = Float(value)
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        #if targetEnvironment(UIKitForMac)
+        if (indexPath.row == 0) {
+            return 0.0
+        }
+        #endif
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
 }
 
 
