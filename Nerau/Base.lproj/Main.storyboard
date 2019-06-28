@@ -118,7 +118,7 @@
                     <navigationItem key="navigationItem" title="Nerau" id="Xy2-pH-z9X">
                         <barButtonItem key="leftBarButtonItem" image="profile" id="DCN-ln-JNb">
                             <connections>
-                                <segue destination="hXx-0E-Xhv" kind="presentation" modalPresentationStyle="formSheet" id="Jby-ba-KHs"/>
+                                <segue destination="hXx-0E-Xhv" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="Jby-ba-KHs"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Training" id="Sc6-jK-EYC">
@@ -521,12 +521,19 @@
                     <children>
                         <menu title="Application" discoverabilityTitle="" identifier="com.apple.menu.application" id="o8u-kN-PR3">
                             <children>
-                                <menu title="About" discoverabilityTitle="" identifier="com.apple.menu.about" id="ACp-eV-NkN">
+                                <menu title="About" discoverabilityTitle="" identifier="com.apple.menu.about" id="ehc-ic-L8b">
                                     <commandGroupOptions key="options" displayInline="YES"/>
                                     <children>
-                                        <command title="About Application" discoverabilityTitle="" propertyListString="" id="PaE-5a-ld7">
+                                        <command title="About Application" discoverabilityTitle="" propertyListString="" id="o15-Ma-Ltt"/>
+                                    </children>
+                                </menu>
+                                <menu title="Preferences" discoverabilityTitle="" identifier="com.apple.menu.prefs" id="ACp-eV-NkN">
+                                    <commandGroupOptions key="options" displayInline="YES"/>
+                                    <children>
+                                        <command title="Preferences" discoverabilityTitle="" propertyListString="" input="," id="jAQ-7q-acx">
+                                            <keyModifierFlags key="modifierFlags" command="YES"/>
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" destination="WH8-bX-UUJ" id="xtF-SP-5My"/>
+                                                <action selector="displayPreferencesWithSender:" destination="WH8-bX-UUJ" id="Pbd-T4-4ly"/>
                                             </connections>
                                         </command>
                                     </children>
@@ -973,6 +980,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WH8-bX-UUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4289" y="-630"/>
+        </scene>
+        <!--Inline Section-->
+        <scene sceneID="glG-ja-GNz">
+            <objects>
+                <menu title="About" discoverabilityTitle="" identifier="com.apple.menu.about" id="s3y-9S-AaY" sceneMemberID="viewController">
+                    <commandGroupOptions key="options" displayInline="YES"/>
+                    <children>
+                        <command title="About Application" discoverabilityTitle="" propertyListString="" id="udd-OC-LQx"/>
+                        <command title="Preferences" discoverabilityTitle="" propertyListString="" id="IRS-uN-tih"/>
+                    </children>
+                </menu>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdg-Di-gyH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="58" y="369"/>
         </scene>
     </scenes>
     <resources>

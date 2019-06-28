@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sj-X9-zx2">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,7 @@
         <!--Settings-->
         <scene sceneID="K2y-v6-ZsQ">
             <objects>
-                <tableViewController id="tOB-Dl-v7T" sceneMemberID="viewController">
+                <tableViewController id="tOB-Dl-v7T" customClass="SettingsController" customModule="Nerau" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cwp-qL-I0E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,7 +140,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="laF-xZ-njg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="UYj-j0-AzU"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="UYj-j0-AzU">
+                            <connections>
+                                <action selector="closeSettingsWithSender:" destination="tOB-Dl-v7T" id="qTN-v1-nHa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9r-hH-nHC" userLabel="First Responder" sceneMemberID="firstResponder"/>

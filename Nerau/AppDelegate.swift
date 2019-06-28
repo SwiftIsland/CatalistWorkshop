@@ -45,6 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Menu Actions
     
+    @IBAction func displayPreferences(sender: Any?) {
+        let window = UIApplication.shared.keyWindow
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() else { fatalError("Missing Settings") }
+        controller.modalPresentationStyle = .automatic
+        window?.rootViewController?.present(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func beginEasyTraining(sender: UIMenuItem?) {
         startTraining(configuration: TrainConfiguration(difficulty: .easy, length: 10, mode: .normal))
     }
