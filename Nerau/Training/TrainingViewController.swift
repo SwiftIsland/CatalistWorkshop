@@ -4,11 +4,14 @@ import NerauModel
 class TrainingViewController: UIViewController {
     
     private var controlsViewController: TrainingControlsTableViewController?
+    @IBOutlet weak var closeButton: UIButton?
     
+    #if targetEnvironment(UIKitForMac)
     let SliderTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "SliderItem")
     let OkButttonTouchBarItemIdentifer = NSTouchBarItem.Identifier(rawValue: "OkButton")
     let CancelButtonTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "CancelButton")
     let ActionGroupTouchBarItemIdentifier = NSTouchBarItem.Identifier(rawValue: "Group")
+    #endif
     
     override var keyCommands: [UIKeyCommand]? {
         return [UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(doCancelCommand(sender:))),
@@ -21,13 +24,19 @@ class TrainingViewController: UIViewController {
         beginTrainingWithConfiguration(configuration: config)
     }
     
-    @objc func doCancelCommand(sender: UIKeyCommand) {
-        controlsViewController?.dismiss(animated: true, completion: nil)
-        controlsViewController = nil
+    @IBAction func doCancelCommand(sender: Any?) {
+        cleanup()
     }
     
     @objc func doBeginCommand(sender: UIKeyCommand) {
         doBeginTraining(sender: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        #if targetEnvironment(UIKitForMac)
+        closeButton?.isHidden = false
+        #endif
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,11 +52,13 @@ class TrainingViewController: UIViewController {
         default: fatalError("Unknown Segue \(segue.identifier ?? "Anon")")
         }
         
+        #if targetEnvironment(UIKitForMac)
         self.touchBar = makeTouchBar()
         
         controlsViewController?.sliderChange = { [weak self] in
             self?.touchBar = self?.makeTouchBar()
         }
+        #endif
     }
     
     internal func beginTrainingWithConfiguration(configuration: TrainConfiguration) {
@@ -62,30 +73,47 @@ class TrainingViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    #if targetEnvironment(UIKitForMac)
     @objc func didUpdateTouchbarSlider(slider: NSSliderTouchBarItem) {
         if let value = slider.value(forKeyPath: "slider.intValue") as? Int {
             controlsViewController?.updateSlider(with: CGFloat(value))
         }
     }
+    #endif
     
     @objc func touchBarBegin(sender: Any) {
         doBeginTraining(sender: nil)
     }
     
     @objc func touchBarCancel(sender: Any) {
+        cleanup()
+    }
+    
+    private func cleanup() {
+        #if targetEnvironment(UIKitForMac)
+        self.touchBar = nil
+        setNeedsTouchBarUpdate()
+        #endif
         controlsViewController?.dismiss(animated: true, completion: nil)
+        dismiss(animated: false)
+        controlsViewController = nil
     }
 }
 
 extension TrainingViewController: TrainControllerDelegate {
     func didFinishTraining(result: TrainResult, controller: TrainController) {
         controller.dismiss(animated: true) {
-            self.performSegue(withIdentifier: "resultController", sender: result)
+            self.cleanup()
+            guard let wrappingController = self.storyboard?.instantiateViewController(identifier: "ResultWrapper")
+                as? ResultWrappingController
+                else { return }
+            wrappingController.result = result
+            self.presentingViewController?.present(wrappingController, animated: true, completion: nil)
         }
     }
     
     func didCancelTraining(controller: TrainController) {
-        controller.dismiss(animated: true)
+        cleanup()
     }
 }
 

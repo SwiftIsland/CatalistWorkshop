@@ -94,10 +94,19 @@ public final class SidebarController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = structure[indexPath.section].entries[indexPath.row]
-        ((splitViewController?
-            .viewControllers[1] as? UINavigationController)?
-            .topViewController as? DetailListController)?
-            .currentSelection = (entry.title, entry.selection)
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            guard let controller = storyboard?.instantiateViewController(identifier: "DetailList")
+                as? DetailListController
+                else { return }
+            splitViewController?.showDetailViewController(controller, sender: nil)
+            controller.currentSelection = (entry.title, entry.selection)
+        } else {
+            ((splitViewController?
+                .viewControllers[1] as? UINavigationController)?
+                .topViewController as? DetailListController)?
+                .currentSelection = (entry.title, entry.selection)
+        }
     }
     
     private func updateStructure() {

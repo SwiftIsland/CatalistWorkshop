@@ -59,13 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func openResult(result: TrainResult) {
         let window = UIApplication.shared.keyWindow
-        let storyboard = UIStoryboard(name: "Result", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? ResultController
-            else { fatalError("Missing Settings") }
-        controller.modalPresentationStyle = .automatic
-        controller.result = result
-        window?.rootViewController?.present(controller, animated: true, completion: {
-        })
+        guard let wrappingController = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultWrapper") as? ResultWrappingController
+            else { return }
+        wrappingController.result = result
+        window?.rootViewController?.present(wrappingController, animated: true, completion: nil)
     }
     
     func startTraining(configuration: TrainConfiguration?) {
@@ -73,8 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let controller = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultController") as? TrainingViewController else { fatalError() }
         controller.modalPresentationStyle = .formSheet
         window?.rootViewController?.present(controller, animated: true, completion: {
-        
-        (window?.rootViewController as? UITabBarController)?.viewControllers?[0].present(controller, animated: true, completion: {
             if let config = configuration {
                 controller.beginTrainingWithConfiguration(configuration: config)
             }

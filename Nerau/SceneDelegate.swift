@@ -3,8 +3,10 @@ import NerauModel
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
+    #if targetEnvironment(UIKitForMac)
     static let SegmentedItemToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "PrimaryGroup")
     static let NewTrainingItemToolbarIdentifier = NSToolbarItem.Identifier(rawValue: "NewTraining")
+    #endif
     
     var window: UIWindow?
     

@@ -9,23 +9,38 @@
 import UIKit
 import NerauModel
 
-class MacSplitViewController: UISplitViewController {
+class MacSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
     
+    #if targetEnvironment(UIKitForMac)
     static let NewTrainingItemTouchbarIdentifier = NSTouchBarItem.Identifier(rawValue: "NewTraining")
+    #endif
     
     override func viewDidLoad() {
         super.viewDidLoad()
         #if targetEnvironment(UIKitForMac)
-        self.minimumPrimaryColumnWidth = 50
+        self.minimumPrimaryColumnWidth = 150
         self.maximumPrimaryColumnWidth = 300
         self.primaryBackgroundStyle = .sidebar
         view.addInteraction(UIDropInteraction(delegate: self))
+        #else
+        self.delegate = self
+        self.preferredDisplayMode = .allVisible
         #endif
     }
     
     @objc func doBeginNewTraining(sender: Any) {
         (UIApplication.shared.delegate as? AppDelegate)?.startTraining(configuration: nil)
     }
+    
+    #if !targetEnvironment(UIKitForMac)
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController: UIViewController,
+        onto primaryViewController: UIViewController) -> Bool {
+        // Return true to prevent UIKit from applying its default behavior
+        return true
+    }
+    #endif
 }
 
 #if targetEnvironment(UIKitForMac)

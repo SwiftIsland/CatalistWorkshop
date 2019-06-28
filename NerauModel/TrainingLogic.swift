@@ -24,13 +24,14 @@ public struct TrainingLogic {
         ) {
             let randomValidCharacters = (0..<totalNumber).compactMap { _ in validCharacters.randomElement() }
             let randomHitCharacters = (0..<hitCharacters.count).compactMap { _ in hitCharacters.characters.randomElement() }
-            /// the safe area is a tap target
-            guard dimensions.width > tapTargetSize*2,
-                dimensions.height > tapTargetSize*2 else {
+            /// the safe area is the area at the corners
+            let safeArea: CGFloat = 100
+            guard dimensions.width > safeArea*2,
+                dimensions.height > safeArea*2 else {
                     throw TrainLogicError.message("Device is too small")
             }
-            let dims = (w: Int(tapTargetSize)..<(Int(dimensions.width - tapTargetSize)),
-                        h: Int(tapTargetSize)..<(Int(dimensions.height - tapTargetSize)))
+            let dims = (w: Int(safeArea)..<(Int(dimensions.width - safeArea)),
+                        h: Int(safeArea)..<(Int(dimensions.height - safeArea)))
             let distributeCharacters = { (characters: [Character],
                 overlays: [(Character, CGPoint)],
                 tapTargetSize: CGFloat) -> [(Character, CGPoint)] in
@@ -90,6 +91,6 @@ public struct TrainingLogic {
     }
     
     public static var tapTargetSize: CGFloat {
-        return 30.0
+        return 44.0
     }
 }

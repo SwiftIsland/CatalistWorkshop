@@ -62,7 +62,9 @@ final class ResultWrappingController: UIViewController {
 
 final class ResultController: UIViewController {
     
+    #if targetEnvironment(UIKitForMac)
     static let SomethingTouchBarIdentifier = NSTouchBarItem.Identifier(rawValue: "ToggleStar")
+    #endif
     
     public var result: TrainResult?
     
@@ -113,7 +115,9 @@ final class ResultController: UIViewController {
         result?.stared.toggle()
         guard let r = result else { return }
         Database.shared.toggleStarResult(result: r)
+        #if targetEnvironment(UIKitForMac)
         self.touchBar = self.makeTouchBar()
+        #endif
     }
     
     @IBAction func storeResult(sender: Any?) {
