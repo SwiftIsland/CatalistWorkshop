@@ -78,13 +78,18 @@ public final class DetailListController: UITableViewController {
                        entry.configuration.mode.name)
         cell?.secondaryLabel?.text = s
         cell?.toggleButton.value = entry.stared
-        cell?.toggleButton.handler = { b in
-            var updatedEntry = entry
-            updatedEntry.stared = b
-            Database.shared.toggleStarResult(result: updatedEntry)
-            self.updateList()
+        cell?.toggleButton.handler = { [weak self] b in
+            self?.changeStar(value: b, indexPath: indexPath)
         }
+        
         return cell!
+    }
+    
+    private func changeStar(value: Bool, indexPath: IndexPath) {
+        var updatedEntry =  results[indexPath.row]
+        updatedEntry.stared = value
+        Database.shared.toggleStarResult(result: updatedEntry)
+        self.updateList()
     }
     
     public override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -98,6 +103,25 @@ public final class DetailListController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowResult", sender: results[indexPath.row])
+    }
+    
+    public override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let entry = results[indexPath.row]
+        let actionProvider: ([UIMenuElement]) -> UIMenu? = { _ in
+            let share = UIAction(__title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                print("Share me")
+            }
+            let title = entry.stared ? "Unstar" : "Star"
+            let image = entry.stared ? "star.fill" : "star"
+            let toggleStar = UIAction(__title: title, image: UIImage(systemName: image)) { _ in
+                self.changeStar(value: !entry.stared, indexPath: indexPath)
+            }
+            
+            return UIMenu(__title: "Actions", image: nil, identifier: nil, children: [share, toggleStar])
+        }
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: actionProvider)
     }
     
     private func updateList() {
