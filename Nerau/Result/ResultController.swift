@@ -55,6 +55,10 @@ final class ResultController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(UIKitForMac)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        #endif
+
         imageView.image = self.result!.resultImage(size: imageView.frame.size)
     }
     

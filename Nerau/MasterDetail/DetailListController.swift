@@ -57,6 +57,13 @@ public final class DetailListController: UITableViewController {
         }
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        #if targetEnvironment(UIKitForMac)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        #endif
+    }
+    
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let entry = results[indexPath.row]
         let identifier = "DetailListCell"
