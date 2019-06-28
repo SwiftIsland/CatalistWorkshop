@@ -8,6 +8,8 @@ class ResultHoverView: UIView {
         }
     }
     
+    private var tileSize: (x: CGFloat, y: CGFloat) = (0, 0)
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let strengthMap = trainResult?.strengthMap else { return }
@@ -15,7 +17,7 @@ class ResultHoverView: UIView {
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.setFillColor(UIColor.white.cgColor)
         ctx.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        let tileSize = (x: size.width / CGFloat(TrainResult.mapSize.0), y: size.height / CGFloat(TrainResult.mapSize.1))
+        tileSize = (x: size.width / CGFloat(TrainResult.mapSize.0), y: size.height / CGFloat(TrainResult.mapSize.1))
         for (index, value) in strengthMap.enumerated() {
             let row = CGFloat(index / TrainResult.mapSize.0)
             let col = CGFloat(index % TrainResult.mapSize.1)
@@ -33,6 +35,13 @@ class ResultHoverView: UIView {
 
     }
     
+    public func value(at point: CGPoint) -> Double {
+        guard let r = trainResult else { return 0.0 }
+        let x = Int(point.x / tileSize.x)
+        let y = Int(point.y / tileSize.y)
+        let index = (y * TrainResult.mapSize.0) + x
+        return r.strengthMap[index]
+    }
 }
 
 final class ResultWrappingController: UIViewController {
@@ -64,6 +73,7 @@ final class ResultController: UIViewController {
     @IBOutlet var durationField: UITextField!
     
     @IBOutlet weak var hoverView: ResultHoverView!
+    @IBOutlet weak var valueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +83,11 @@ final class ResultController: UIViewController {
         containerViewBottom.constant = 0
         #endif
         
+        valueLabel.text = "0.0"
+        
         hoverView.trainResult = self.result
+        let hover = UIHoverGestureRecognizer(target: self, action: #selector(hovering(_:)))
+        hoverView.addGestureRecognizer(hover)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +101,14 @@ final class ResultController: UIViewController {
         guard let r = result else { return }
         Database.shared.toggleStarResult(result: r)
         self.touchBar = self.makeTouchBar()
+    }
+    
+    @objc
+    func hovering(_ recognizer: UIHoverGestureRecognizer) {
+        guard let view = recognizer.view else { return }
+        let loc = recognizer.location(in: view)
+        let value = hoverView.value(at: loc)
+        valueLabel.text = NumberFormatter.localizedString(from: NSNumber(value: value), number: .decimal)
     }
 }
 

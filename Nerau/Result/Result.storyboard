@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6X-iL-wwp">
-                                <rect key="frame" x="0.0" y="275" width="414" height="538"/>
+                                <rect key="frame" x="0.0" y="308" width="414" height="505"/>
                                 <connections>
                                     <segue destination="Xj6-Ut-x1u" kind="embed" identifier="resultList" id="JuS-gz-1fZ"/>
                                 </connections>
@@ -35,18 +35,26 @@
                                     <barButtonItem title="Assign Contact" id="YQV-rD-ypi"/>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK8-mn-uig">
+                                <rect key="frame" x="186" y="277" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="LK8-mn-uig" firstAttribute="centerX" secondItem="HRC-OY-kdY" secondAttribute="centerX" id="2LJ-WQ-HAe"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="eZC-dd-yOJ" secondAttribute="bottom" id="3QG-EA-8dc"/>
                             <constraint firstItem="u3k-D7-Uhq" firstAttribute="top" secondItem="HRC-OY-kdY" secondAttribute="top" constant="14" id="6JW-4M-2oa"/>
                             <constraint firstItem="d6X-iL-wwp" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="86n-Yu-enk"/>
+                            <constraint firstItem="LK8-mn-uig" firstAttribute="top" secondItem="u3k-D7-Uhq" secondAttribute="bottom" constant="10" id="ATm-ti-aDg"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="d6X-iL-wwp" secondAttribute="bottom" constant="49" id="Mcr-HY-JmQ"/>
                             <constraint firstItem="eZC-dd-yOJ" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="gN3-Bd-iw1"/>
-                            <constraint firstItem="d6X-iL-wwp" firstAttribute="top" secondItem="u3k-D7-Uhq" secondAttribute="bottom" constant="8" id="gQN-PV-uK0"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="trailing" secondItem="eZC-dd-yOJ" secondAttribute="trailing" id="jk0-rj-B4b"/>
                             <constraint firstItem="u3k-D7-Uhq" firstAttribute="centerX" secondItem="HRC-OY-kdY" secondAttribute="centerX" id="p70-fx-4Tn"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="trailing" secondItem="d6X-iL-wwp" secondAttribute="trailing" id="pMQ-gC-fIf"/>
+                            <constraint firstItem="d6X-iL-wwp" firstAttribute="top" secondItem="LK8-mn-uig" secondAttribute="bottom" constant="10" id="yRq-8h-hXv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRC-OY-kdY"/>
                     </view>
@@ -55,6 +63,7 @@
                         <outlet property="bottomToolbar" destination="eZC-dd-yOJ" id="R7B-Wi-vlk"/>
                         <outlet property="containerViewBottom" destination="Mcr-HY-JmQ" id="102-1N-xqq"/>
                         <outlet property="hoverView" destination="u3k-D7-Uhq" id="YBG-ma-ABT"/>
+                        <outlet property="valueLabel" destination="LK8-mn-uig" id="Bku-LU-v4H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ah-g1-c7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,7 +75,7 @@
             <objects>
                 <tableViewController id="Xj6-Ut-x1u" customClass="ResultTimeIntervalListController" customModule="Nerau" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mRK-6R-5jo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
