@@ -1,10 +1,17 @@
 import UIKit
 import NerauModel
 
-extension TrainResult {
-    /// Convert a result into a UIImage that shows the areas which the user excels at and not
-    func resultImage(size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContext(size)
+class ResultHoverView: UIView {
+    public var trainResult: TrainResult? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        guard let strengthMap = trainResult?.strengthMap else { return }
+        let size = rect.size
         let ctx = UIGraphicsGetCurrentContext()!
         ctx.setFillColor(UIColor.white.cgColor)
         ctx.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -16,16 +23,16 @@ extension TrainResult {
             let color = UIColor(white: CGFloat(1.0 - value), alpha: 1.0)
             ctx.setFillColor(color.cgColor)
             ctx.fill(rect)
-
+            
         }
         ctx.setFillColor(UIColor.red.cgColor)
         ctx.fill(CGRect(x: size.width / 2 - 1, y: 0, width: 2, height: size.height))
         ctx.fill(CGRect(x: 0, y: size.height / 2 - 1, width: size.width, height: 2))
         ctx.setStrokeColor(UIColor.darkGray.cgColor)
         ctx.stroke(CGRect(origin: CGPoint.zero, size: size))
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        return img!
+
     }
+    
 }
 
 final class ResultWrappingController: UIViewController {
@@ -56,6 +63,8 @@ final class ResultController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var durationField: UITextField!
     
+    @IBOutlet weak var hoverView: ResultHoverView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         #if targetEnvironment(UIKitForMac)
@@ -64,7 +73,7 @@ final class ResultController: UIViewController {
         containerViewBottom.constant = 0
         #endif
         
-        imageView.image = self.result!.resultImage(size: imageView.frame.size)
+        hoverView.trainResult = self.result
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

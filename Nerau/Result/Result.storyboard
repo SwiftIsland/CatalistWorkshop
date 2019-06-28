@@ -21,13 +21,14 @@
                                     <segue destination="Xj6-Ut-x1u" kind="embed" identifier="resultList" id="JuS-gz-1fZ"/>
                                 </connections>
                             </containerView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3I-Ml-qEs">
-                                <rect key="frame" x="67.5" y="64" width="279" height="203"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3k-D7-Uhq" customClass="ResultHoverView" customModule="Nerau" customModuleProvider="target">
+                                <rect key="frame" x="65" y="58" width="284" height="209"/>
+                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="203" id="AFI-Vo-3ah"/>
-                                    <constraint firstAttribute="width" constant="279" id="pgC-nX-Vrj"/>
+                                    <constraint firstAttribute="height" constant="209" id="UO7-BN-PNz"/>
+                                    <constraint firstAttribute="width" constant="284" id="pY7-M4-Gz9"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZC-dd-yOJ">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -38,14 +39,14 @@
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="eZC-dd-yOJ" secondAttribute="bottom" id="3QG-EA-8dc"/>
-                            <constraint firstItem="k3I-Ml-qEs" firstAttribute="top" secondItem="HRC-OY-kdY" secondAttribute="top" constant="20" id="6Tu-Mx-XTU"/>
+                            <constraint firstItem="u3k-D7-Uhq" firstAttribute="top" secondItem="HRC-OY-kdY" secondAttribute="top" constant="14" id="6JW-4M-2oa"/>
                             <constraint firstItem="d6X-iL-wwp" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="86n-Yu-enk"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="bottom" secondItem="d6X-iL-wwp" secondAttribute="bottom" constant="49" id="Mcr-HY-JmQ"/>
-                            <constraint firstItem="k3I-Ml-qEs" firstAttribute="centerX" secondItem="HRC-OY-kdY" secondAttribute="centerX" id="Wyp-tM-GNC"/>
                             <constraint firstItem="eZC-dd-yOJ" firstAttribute="leading" secondItem="HRC-OY-kdY" secondAttribute="leading" id="gN3-Bd-iw1"/>
+                            <constraint firstItem="d6X-iL-wwp" firstAttribute="top" secondItem="u3k-D7-Uhq" secondAttribute="bottom" constant="8" id="gQN-PV-uK0"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="trailing" secondItem="eZC-dd-yOJ" secondAttribute="trailing" id="jk0-rj-B4b"/>
+                            <constraint firstItem="u3k-D7-Uhq" firstAttribute="centerX" secondItem="HRC-OY-kdY" secondAttribute="centerX" id="p70-fx-4Tn"/>
                             <constraint firstItem="HRC-OY-kdY" firstAttribute="trailing" secondItem="d6X-iL-wwp" secondAttribute="trailing" id="pMQ-gC-fIf"/>
-                            <constraint firstItem="d6X-iL-wwp" firstAttribute="top" secondItem="k3I-Ml-qEs" secondAttribute="bottom" constant="8" id="s0N-Xw-1xr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRC-OY-kdY"/>
                     </view>
@@ -53,12 +54,12 @@
                     <connections>
                         <outlet property="bottomToolbar" destination="eZC-dd-yOJ" id="R7B-Wi-vlk"/>
                         <outlet property="containerViewBottom" destination="Mcr-HY-JmQ" id="102-1N-xqq"/>
-                        <outlet property="imageView" destination="k3I-Ml-qEs" id="07D-P0-vbg"/>
+                        <outlet property="hoverView" destination="u3k-D7-Uhq" id="YBG-ma-ABT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ah-g1-c7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3327" y="715"/>
+            <point key="canvasLocation" x="3326.0869565217395" y="714.50892857142856"/>
         </scene>
         <!--Result Time Interval List Controller-->
         <scene sceneID="jtz-45-XmG">
