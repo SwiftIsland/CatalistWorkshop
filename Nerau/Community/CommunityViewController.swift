@@ -68,7 +68,10 @@ public final class CommunityViewController: UITableViewController {
     }
     
     private func loadData() {
-        let bundleIdentifier =  Bundle.main.bundleIdentifier!
+        var bundleIdentifier =  Bundle.main.bundleIdentifier!
+        #if targetEnvironment(UIKitForMac)
+        bundleIdentifier = "com.stylemac.Nerau"
+        #endif
         var request = URLRequest(url: URL(string: "http://nerau.stylemac.com")!)
         request.addValue(bundleIdentifier, forHTTPHeaderField: "x-nerau-client")
         let c = URLSession(configuration: URLSessionConfiguration.ephemeral).dataTask(with: request) { (data, response, error) in
