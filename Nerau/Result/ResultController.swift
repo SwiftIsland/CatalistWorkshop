@@ -75,6 +75,12 @@ final class ResultController: UIViewController {
     @IBOutlet weak var hoverView: ResultHoverView!
     @IBOutlet weak var valueLabel: UILabel!
     
+    #if targetEnvironment(UIKitForMac)
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    #endif
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         #if targetEnvironment(UIKitForMac)
@@ -89,6 +95,13 @@ final class ResultController: UIViewController {
         let hover = UIHoverGestureRecognizer(target: self, action: #selector(hovering(_:)))
         hoverView.addGestureRecognizer(hover)
     }
+
+    #if targetEnvironment(UIKitForMac)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        becomeFirstResponder()
+    }
+    #endif
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultList" {
@@ -101,6 +114,17 @@ final class ResultController: UIViewController {
         guard let r = result else { return }
         Database.shared.toggleStarResult(result: r)
         self.touchBar = self.makeTouchBar()
+    }
+    
+    @IBAction func storeResult(sender: Any?) {
+        guard let result = result else { return }
+        let data = result.exportData
+        let filename = DateFormatter.localizedString(from: result.date, dateStyle: .medium, timeStyle: .medium)
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let filePath = paths[0].appendingPathComponent("\(filename).json")
+        try! data.write(to: filePath)
+        let controller = UIDocumentPickerViewController(url: filePath, in: UIDocumentPickerMode.exportToService)
+        (view.window?.rootViewController)?.present(controller, animated: true, completion: nil)
     }
     
     @objc

@@ -585,6 +585,11 @@
                                                 <action selector="beginEasyTrainingWithSender:" destination="WH8-bX-UUJ" id="xfk-Wz-OaR"/>
                                             </connections>
                                         </command>
+                                        <command title="Export Result..." id="5FA-gC-gUA">
+                                            <connections>
+                                                <action selector="storeResultWithSender:" destination="WH8-bX-UUJ" id="KJg-Qs-iN6"/>
+                                            </connections>
+                                        </command>
                                         <command title="Close" discoverabilityTitle="" propertyListString="" input="w" id="28h-EN-T4d">
                                             <keyModifierFlags key="modifierFlags" command="YES"/>
                                             <alternates>

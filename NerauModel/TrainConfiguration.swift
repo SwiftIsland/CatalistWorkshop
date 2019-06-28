@@ -1,10 +1,10 @@
 import Foundation
 
-public struct TrainConfiguration {
-    public enum Difficulty: Int, CaseIterable {
+public struct TrainConfiguration: Codable {
+    public enum Difficulty: Int, CaseIterable, Codable {
         case easy, medium, hard, insane
     }
-    public enum Mode: Int {
+    public enum Mode: Int, Codable {
         case normal
         #if !targetEnvironment(UIKitForMac)
         case AR

@@ -1,6 +1,18 @@
 import Foundation
 import CoreData
 
+private struct ExportPayload: Codable {
+    struct Entry: Codable {
+        var point: CGPoint
+        var duration: Double
+    }
+    var configuration: TrainConfiguration
+    var duration: TimeInterval
+    var strengthMap: [Double]
+    var points: [Entry]
+    var date: Date
+}
+
 public struct TrainResult {
     public typealias ResultEntry = (CGPoint, TimeInterval)
     
@@ -31,5 +43,10 @@ public struct TrainResult {
         self.strengthMap = strengthMap
         self.durationPoints = durations
         self.date = Date()
+    }
+    
+    public var exportData: Data {
+        let container = ExportPayload(configuration: configuration, duration: duration, strengthMap: strengthMap, points: durationPoints.map { ExportPayload.Entry(point: $0.0, duration: $0.1) }, date: date)
+        return try! JSONEncoder().encode(container)
     }
 }
