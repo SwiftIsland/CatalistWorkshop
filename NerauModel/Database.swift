@@ -182,6 +182,13 @@ public final class Database {
         }
     }
     
+    /// imports a result, returns the imported result
+    public func importFromJSON(data: Data) throws -> TrainResult {
+        var imported = try TrainResult.fromData(data)
+        saveTrainResult(&imported)
+        return imported
+    }
+    
     private func process(_ action: () throws -> ()) {
         do {
             try action()

@@ -37,6 +37,13 @@ public struct TrainResult {
     /// Did we star this
     public var stared: Bool = false
     
+    internal static func fromData(_ data: Data) throws -> TrainResult {
+        let container = try JSONDecoder().decode(ExportPayload.self, from: data)
+        var new = TrainResult(configuration: container.configuration, duration: container.duration, strengthMap: container.strengthMap, durations: container.points.map { ($0.point, $0.duration) })
+        new.date = container.date
+        return new
+    }
+    
     public init(configuration: TrainConfiguration, duration: TimeInterval, strengthMap: [Double], durations: [ResultEntry]) {
         self.configuration = configuration
         self.duration = duration

@@ -57,6 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         startTraining(configuration: TrainConfiguration(difficulty: .easy, length: 10, mode: .normal))
     }
     
+    func openResult(result: TrainResult) {
+        let window = UIApplication.shared.keyWindow
+        let storyboard = UIStoryboard(name: "Result", bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() as? ResultController
+            else { fatalError("Missing Settings") }
+        controller.modalPresentationStyle = .automatic
+        controller.result = result
+        window?.rootViewController?.present(controller, animated: true, completion: {
+        })
+    }
+    
     func startTraining(configuration: TrainConfiguration?) {
         let window = UIApplication.shared.keyWindow
         guard let controller = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultController") as? TrainingViewController else { fatalError() }
