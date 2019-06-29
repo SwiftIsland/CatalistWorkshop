@@ -592,10 +592,15 @@
                                 <menu discoverabilityTitle="" identifier="com.apple.menu.close" id="N1y-H7-lbV">
                                     <commandGroupOptions key="options" displayInline="YES"/>
                                     <children>
-                                        <command title="Easy Training" input="N" id="PV1-Bk-82v">
+                                        <command title="New Window" input="n" id="PV1-Bk-82v">
                                             <keyModifierFlags key="modifierFlags" command="YES"/>
                                             <connections>
-                                                <action selector="beginEasyTrainingWithSender:" destination="WH8-bX-UUJ" id="xfk-Wz-OaR"/>
+                                                <action selector="requestNewScene:" destination="WH8-bX-UUJ" id="tKN-zX-dEk"/>
+                                            </connections>
+                                        </command>
+                                        <command title="Easy Training" id="zQR-av-coY">
+                                            <connections>
+                                                <action selector="beginEasyTrainingWithSender:" destination="WH8-bX-UUJ" id="cdD-et-Sql"/>
                                             </connections>
                                         </command>
                                         <command title="Export Result..." id="5FA-gC-gUA">
