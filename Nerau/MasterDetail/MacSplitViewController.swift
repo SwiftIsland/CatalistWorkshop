@@ -41,6 +41,24 @@ class MacSplitViewController: UISplitViewController, UISplitViewControllerDelega
         return true
     }
     #endif
+    
+    #if targetEnvironment(UIKitForMac)
+    
+    @IBAction func storeResult(sender: Any?) {
+        /// We forward from here to the actual implementation iff `canPerformAction` returned true
+        ((viewControllers.last as? UINavigationController)?.visibleViewController as? ResultController)?.storeResult(sender: sender)
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        /// This is where we really want a `Coordinator` or `Presenter` or anything, really, with a `Router` pattern
+        /// So that we know the current state of the UI. We need to know whether a `ResultController` is currently
+        /// being displayed.
+        if action == Selector(("storeResultWithSender:")) {
+            return ((viewControllers.last as? UINavigationController)?.visibleViewController is ResultController)
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    #endif
 }
 
 #if targetEnvironment(UIKitForMac)

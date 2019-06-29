@@ -77,12 +77,6 @@ final class ResultController: UIViewController {
     @IBOutlet weak var hoverView: ResultHoverView!
     @IBOutlet weak var valueLabel: UILabel!
     
-    #if targetEnvironment(UIKitForMac)
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    #endif
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         #if targetEnvironment(UIKitForMac)
@@ -101,7 +95,6 @@ final class ResultController: UIViewController {
     #if targetEnvironment(UIKitForMac)
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        becomeFirstResponder()
     }
     #endif
     
