@@ -9,8 +9,18 @@
 import UIKit
 import NerauModel
 
+let ResultOpenDetailActivityType = "com.stylemac.nerau.openResult"
+let ResultOpenTrainResultKey = "result"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    private var nextSceneName: String? = nil
+    private var nextSceneResult: [String: TrainResult] = [:]
+    
+    func sceneResult(for key: String) -> TrainResult? {
+        return nextSceneResult.removeValue(forKey: key)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if Database.shared.numberOfTrainResults() == 0 {
@@ -42,6 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        defer {
+            nextSceneName = nil
+        }
+        return UISceneConfiguration(name: nextSceneName ?? "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
 
     // MARK: Menu Actions
     
@@ -58,11 +77,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func openResult(result: TrainResult) {
-        let window = UIApplication.shared.keyWindow
-        guard let wrappingController = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultWrapper") as? ResultWrappingController
-            else { return }
-        wrappingController.result = result
-        window?.rootViewController?.present(wrappingController, animated: true, completion: nil)
+        
+        /// Open a new window with
+        let newWindowExample = true
+        if newWindowExample {
+            let uuid = UUID().uuidString
+            nextSceneResult[uuid] = result
+            let userActivity = NSUserActivity(activityType: ResultOpenDetailActivityType)
+            userActivity.userInfo = [ResultOpenTrainResultKey: uuid]
+            nextSceneName = "Result Configuration"
+            UIApplication.shared.requestSceneSessionActivation(nil, userActivity: userActivity, options: nil) { (e) in
+                print("error", e)
+            }
+        } else {
+            let window = UIApplication.shared.keyWindow
+            guard let wrappingController = window?.rootViewController?.storyboard?.instantiateViewController(identifier: "ResultWrapper") as? ResultWrappingController
+                else { return }
+            wrappingController.result = result
+            window?.rootViewController?.present(wrappingController, animated: true, completion: nil)
+        }
     }
     
     func startTraining(configuration: TrainConfiguration?) {

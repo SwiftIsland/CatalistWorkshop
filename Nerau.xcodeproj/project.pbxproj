@@ -15,6 +15,7 @@
 		3B10AC5E22B8F20200D835A4 /* TrainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AC5D22B8F20200D835A4 /* TrainController.swift */; };
 		3B10AC6022B8F3E600D835A4 /* TrainViewNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AC5F22B8F3E600D835A4 /* TrainViewNormal.swift */; };
 		4D0E3C1C22C6081E00603C58 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3C1B22C6081E00603C58 /* SettingsController.swift */; };
+		4D25947322CAA1D6001A29BF /* ResultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D25947222CAA1D6001A29BF /* ResultSceneDelegate.swift */; };
 		4D3DEB5622BCF3E400C30B91 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DEB5522BCF3E400C30B91 /* ListController.swift */; };
 		4D3DEB5C22BCF85600C30B91 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DEB5B22BCF85600C30B91 /* SidebarController.swift */; };
 		4D3DEB5E22BD096200C30B91 /* DetailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DEB5D22BD096200C30B91 /* DetailListController.swift */; };
@@ -94,6 +95,7 @@
 		3B10AC5F22B8F3E600D835A4 /* TrainViewNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainViewNormal.swift; sourceTree = "<group>"; };
 		4D0E3BD522C3539600603C58 /* Nerau-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nerau-Bridging-Header.h"; sourceTree = "<group>"; };
 		4D0E3C1B22C6081E00603C58 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		4D25947222CAA1D6001A29BF /* ResultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSceneDelegate.swift; sourceTree = "<group>"; };
 		4D3DEB5522BCF3E400C30B91 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		4D3DEB5B22BCF85600C30B91 /* SidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		4D3DEB5D22BD096200C30B91 /* DetailListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				3B10AC5722B8EEDB00D835A4 /* Info.plist */,
 				4DC772E022C34BBF00EDB6B2 /* SceneDelegate.swift */,
 				4D0E3BD522C3539600603C58 /* Nerau-Bridging-Header.h */,
+				4D25947222CAA1D6001A29BF /* ResultSceneDelegate.swift */,
 			);
 			path = Nerau;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			files = (
 				4D0E3C1C22C6081E00603C58 /* SettingsController.swift in Sources */,
 				4D3DEB6022BD0F6900C30B91 /* Extensions.swift in Sources */,
+				4D25947322CAA1D6001A29BF /* ResultSceneDelegate.swift in Sources */,
 				3B10AC4E22B8EED800D835A4 /* TrainingViewController.swift in Sources */,
 				3B10AC6022B8F3E600D835A4 /* TrainViewNormal.swift in Sources */,
 				4D4F64AF22BFF4A700A81C7A /* MacSplitViewController.swift in Sources */,

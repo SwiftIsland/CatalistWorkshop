@@ -66,7 +66,12 @@ final class ResultController: UIViewController {
     static let SomethingTouchBarIdentifier = NSTouchBarItem.Identifier(rawValue: "ToggleStar")
     #endif
     
-    public var result: TrainResult?
+    public var result: TrainResult? {
+        didSet {
+            listContainer?.dataPoints = (result?.durationPoints.map { $0.1 }) ?? []
+            hoverView?.trainResult = result
+        }
+    }
     
     @IBOutlet weak var containerViewBottom: NSLayoutConstraint!
     @IBOutlet weak var bottomToolbar: UIToolbar!
@@ -76,6 +81,8 @@ final class ResultController: UIViewController {
     
     @IBOutlet weak var hoverView: ResultHoverView!
     @IBOutlet weak var valueLabel: UILabel!
+    
+    private weak var listContainer: ResultTimeIntervalListController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,8 +106,10 @@ final class ResultController: UIViewController {
     #endif
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let points = result?.durationPoints else { return }
         if segue.identifier == "resultList" {
-            (segue.destination as? ResultTimeIntervalListController)?.dataPoints = result!.durationPoints.map { $0.1 }
+            listContainer = segue.destination as? ResultTimeIntervalListController
+            (segue.destination as? ResultTimeIntervalListController)?.dataPoints = points.map { $0.1 }
         }
     }
     
