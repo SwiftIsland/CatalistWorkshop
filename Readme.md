@@ -1,3 +1,4 @@
+# This is an archived repo from our 2019 conference
 # Catalyst Workshop: Nerau
 
 This is the fully implemented version of Nerau for the SwiftIsland Catalyst Workshop.
